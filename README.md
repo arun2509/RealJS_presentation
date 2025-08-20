@@ -1,1 +1,132 @@
 # RealJS_presentation
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Quarterly Earnings Report — RevealJS</title>
+
+  <!-- Reveal core styles -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css" id="theme">
+
+  <!-- Optional Highlight.js theme -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/styles/atom-one-dark.css">
+
+  <style>
+    /* small custom theme */
+    .reveal h1 { color:#0b1e33; }
+    .reveal .email { font-size:0.9rem; opacity:0.85; }
+    .reveal .footer-note { font-size:0.8rem; color:#666; margin-top:1em; }
+    /* responsive code box */
+    pre code { max-height: 360px; overflow: auto; display: block; padding: 1rem; border-radius: 8px; background:#0f1720; color:#e6eef6; }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- TITLE SLIDE -->
+      <section>
+        <h1>Quarterly Earnings — Q2</h1>
+        <p class="email">Prepared by: <strong>22f2000757@ds.study.iitm.ac.in</strong></p>
+        <p class="footer-note">Interactive report — RevealJS</p>
+        <aside class="notes">Intro: summarize key headlines — revenue, margin, outlook.</aside>
+      </section>
+
+      <!-- MARKDOWN SLIDE (one slide written in Markdown via plugin) -->
+      <section data-markdown>
+        <textarea data-template>
+## Highlights (Markdown)
+
+- Revenue ↑ 12% YoY
+- Operating profit ↑ 8% YoY
+- Strong cash conversion
+
+--- 
+
+## Next slide in same markdown block
+
+- Use fragments to reveal points one-by-one
+- Use code / equations on dedicated slides
+        </textarea>
+      </section>
+
+      <!-- ANIMATED ELEMENTS using fragments -->
+      <section>
+        <h2>Key Drivers</h2>
+        <ul>
+          <li class="fragment">Product A: increased adoption</li>
+          <li class="fragment">Cost optimization: lower opex</li>
+          <li class="fragment fade-up">FX tailwind</li>
+        </ul>
+        <aside class="notes">Talk through each driver with examples.</aside>
+      </section>
+
+      <!-- CODE SAMPLE with syntax highlighting -->
+      <section>
+        <h2>Example: simple EBITDA calc (Python)</h2>
+        <pre><code class="language-python">
+def calc_ebitda(revenue, cogs, opex):
+    """EBITDA = Revenue - COGS - OPEX"""
+    return revenue - cogs - opex
+
+print(calc_ebitda(100000, 60000, 20000))  # 20000
+        </code></pre>
+        <aside class="notes">Point out assumptions: periodicity, non-op items excluded.</aside>
+      </section>
+
+      <!-- MATH FORMULA (MathJax) -->
+      <section>
+        <h2>Financial Metric</h2>
+        <p>Return on Investment (ROI):</p>
+        <p>\( \mathrm{ROI} = \dfrac{\text{Gain} - \text{Cost}}{\text{Cost}} \)</p>
+        <aside class="notes">Explain how this is used for project prioritization.</aside>
+      </section>
+
+      <!-- OPTIONAL: small embedded chart placeholder -->
+      <section id="chart-slide">
+        <h2>Revenue Trend (placeholder)</h2>
+        <div id="chart" style="width:70%;height:300px;margin:0 auto;border:1px dashed #ddd;display:flex;align-items:center;justify-content:center;">
+          <em>Embed D3/Plotly chart here</em>
+        </div>
+        <aside class="notes">When presenting, show live chart then explain trend.</aside>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Reveal: use ES module imports from CDN -->
+  <script type="module">
+    import Reveal from 'https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.esm.js';
+    import Markdown from 'https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/markdown/markdown.esm.js';
+    import Highlight from 'https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.esm.js';
+    import Math from 'https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/math/math.esm.js';
+    import Notes from 'https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.esm.js';
+
+    // Load MathJax for math rendering (plugin will use it)
+    const mj = document.createElement('script');
+    mj.id = 'MathJax-script';
+    mj.async = true;
+    mj.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+    document.head.appendChild(mj);
+
+    Reveal.initialize({
+      hash: true,
+      width: 1280,
+      height: 720,
+      margin: 0.04,
+      controls: true,
+      progress: true,
+      history: true,
+      transition: 'slide',
+      plugins: [ Markdown, Highlight, Math, Notes ],
+      // math config uses the MathJax script above
+      math: {
+        mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+      }
+    });
+  </script>
+
+</body>
+</html>
